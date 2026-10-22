@@ -1,13 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import ListScreen from './screens/ListScreen';
+import StudentInfoScreen from './screens/studentinfoScreen';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <ListScreen />
-    </View>
-  );
+  return <StudentInfoScreen />;
 }
 
 const styles = StyleSheet.create({
