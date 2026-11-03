@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import StudentInfoScreen from './screens/studentinfoScreen';
+import { StyleSheet, Text, Touchable, View } from 'react-native';
+import ButtonScreen from './screens/ButtonScreen';
+// import StudentInfoScreen from './screens/studentinfoScreen';
 
 export default function App() {
-  return <StudentInfoScreen />;
+  return <ButtonScreen />;
 }
 
 const styles = StyleSheet.create({
@@ -14,3 +15,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
