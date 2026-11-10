@@ -1,10 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Touchable, View } from 'react-native';
-import StudentScreen from './screens/StudentScreen';
-// import StudentInfoScreen from './screens/studentinfoScreen';
+import ProfileScreen from './screens/profileScreen';
 
 export default function App() {
-  return <StudentScreen />;
+  return <ProfileScreen />;
 }
 
 const styles = StyleSheet.create({
