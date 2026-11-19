@@ -1,32 +1,61 @@
 import React from "react"; 
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { ActivityIndicator, View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
 
 class PostScreen extends React.Component {
     constructor(){
         super();
         this.state = {
-            posts: []
+            posts: [],
+            loading: true,
+            error: '',
         };
     }
     
 async componentDidMount() {
-    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const json = await data.json();
-    this.setState({ posts: jsonData });
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+      if (!response.ok) {
+        throw new Error(`Request failed: ${response.status}`);
+      }
+      const posts = await response.json();
+      this.setState({ posts, loading: false });
+    } catch (error) {
+      this.setState({ error: error.message, loading: false });
+    }
 }
  
 render(){
-    const { posts } = this.state
+    const { posts, loading, error } = this.state;
+
+    if (loading) {
+      return (
+        <View style={styles.centered}>
+          <ActivityIndicator size="large" color="#1264a3" />
+        </View>
+      );
+    }
+
+    if (error) {
+      return (
+        <View style={styles.centered}>
+          <Text style={styles.error}>{error}</Text>
+        </View>
+      );
+    }
+
     return(
-        <View>
-            <Text>Posts</Text>
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.backButton} onPress={this.props.onBack}>
+              <Text style={styles.backText}>← Resources</Text>
+            </TouchableOpacity>
+            <Text style={styles.title}>Posts</Text>
             <FlatList
-            keyExtractor={posts => posts.id}
+            keyExtractor={(item) => String(item.id)}
             data={posts} renderItem={({ item })=> (
-                <View>
-                    <Text>{item.title}</Text>
-                    <Text>{item.id}</Text>
+                <View style={styles.card}>
+                  <Text style={styles.id}>#{item.id}</Text>
+                  <Text style={styles.postTitle}>{item.title}</Text>
                 </View>
     )} 
             />
@@ -36,6 +65,34 @@ render(){
 
 }
 
-// const styles = StyleSheet.create({
-// });
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#f7f9fb', paddingHorizontal: 16 },
+  centered: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' },
+  title: {
+    color: '#17364d',
+    fontSize: 38,
+    fontWeight: '800',
+    paddingTop: 8,
+    paddingBottom: 16,
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#dde5eb',
+    padding: 14,
+    marginBottom: 10,
+  },
+  id: { color: '#1264a3', fontWeight: '700', marginBottom: 4 },
+  postTitle: { color: '#17364d', fontSize: 17 },
+  error: { color: '#b00020', fontSize: 16 },
+  backButton: {
+    marginBottom: 12,
+  },
+  backText: {
+    color: '#1264a3',
+    fontSize: 16,
+  },
+});
+
 export default PostScreen;
