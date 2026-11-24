@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Prishtina",
+    "country": "Kosovë",
+    "description": "Kryeqyteti dhe qendra më e madhe administrative, ekonomike dhe kulturore e Kosovës."
+  },
+  {
+    "id": 2,
+    "name": "Tirana",
+    "country": "Shqipëri",
+    "description": "Kryeqyteti i Shqipërisë, i njohur për arkitekturën e tij shumëngjyrëshe dhe jetën dinamike."
+  },
+  {
+    "id": 3,
+    "name": "Prizreni",
+    "country": "Kosovë",
+    "description": "Qytet historik i njohur për kalanë e tij, trashëgiminë kulturore dhe festivalin DokuFest."
+  },
+  {
+    "id": 4,
+    "name": "Shkodra",
+    "country": "Shqipëri",
+    "description": "Një nga qytetet më të vjetra në Evropën Juglindore, e vendosur pranë liqenit të Shkodrës dhe Kalasë së Rozafës."
+  },
+  {
+    "id": 5,
+    "name": "Peja",
+    "country": "Kosovë",
+    "description": "Qytet në rrëzë të Bjeshkëve të Nemuna, i njohur për Grykën e Rugovës dhe turizmin malor."
+  }
+]
