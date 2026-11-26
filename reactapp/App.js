@@ -1,30 +1,8 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Touchable, View } from 'react-native';
-import CountriesScreen from './screens/CountriesScreen';  
+import React from 'react';
+import ProductsScreen from './screens/ProductsScreen';
 
 export default function App() {
-  const [selectedScreen, setSelectedScreen] = useState(null);
-
-  const screens = {
-    Countries: CountriesScreen,
-  };
-
-  if (selectedScreen) {
-    const SelectedScreen = screens[selectedScreen];
-    return <SelectedScreen onBack={() => setSelectedScreen(null)} />;
-  }
-
-  return <CountriesScreen onSelectCountry={setSelectedScreen} />;
+  return <ProductsScreen />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 
